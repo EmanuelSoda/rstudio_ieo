@@ -9,9 +9,9 @@ IMAGE_VERSION=$(date "+%m%d%y")
 ##===========================================##===========================================##
 # Build the image and push it to docker hub
 ##===========================================##===========================================##
-docker build --platform linux/amd64 --no-cache -t emanuelsoda/rstudio:${IMAGE_VERSION} -t emanuelsoda/rstudio:latest . -f /Users/ieo5571/Documents/rstudio_ieo/R_studio_IEO.Dockerfile 2>&1 | tee stdout.log && \
-docker push emanuelsoda/rstudio:${IMAGE_VERSION}
-docker push emanuelsoda/rstudio:latest
+docker build --platform linux/amd64 --no-cache -t emanuelsoda/rstudio_seurat:${IMAGE_VERSION}  -t emanuelsoda/rstudio_seurat:latest . -f /Users/ieo5571/Documents/rstudio_ieo/Rstudio_Seurat.dockerfile 2>&1 | tee stdout.log && \
+docker push emanuelsoda/rstudio_seurat:${IMAGE_VERSION}
+docker push emanuelsoda/rstudio_seurat:latest
 
 # USE THESE LINES ONLY WHEN EVERYTHING WORKS. Below is for testing.
 
@@ -19,7 +19,7 @@ docker push emanuelsoda/rstudio:latest
 ##===========================================##===========================================##
 # Bulding/testing components of the image
 ##===========================================##===========================================##
-# docker build --progress=plain -temanuelsoda/rstudio:${IMAGE_VERSION} . 2>&1 | tee stdout.log && \
+# docker build --progress=plain -t emanuelsoda/rstudio_seurat:${IMAGE_VERSION} . 2>&1 | tee stdout.log && \
 
 
 # I think --no-cache arguments it's usefull when building the final image of when there are problmes withe dependencies,

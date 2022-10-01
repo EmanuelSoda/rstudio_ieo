@@ -1,30 +1,8 @@
-FROM rocker/tidyverse:latest
+FROM emanuelsoda/rstudio_seurat:latest
 
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
-RUN  apt-get update && apt-get install -y --no-install-recommends \
-    imagemagick \
-  && rm -rf /var/lib/apt/lists/*
+#RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 
-#########  apt-get #########
-RUN apt-get update &&  apt-get install -y --no-install-recommends \
-    build-essential \
-    uuid-dev \
-    libgpgme-dev \
-    squashfs-tools \
-    libseccomp-dev \
-    wget \
-    python3.10 \
-    pkg-config \
-    git \ 
-    tar \
-    python3-pip \
-    cryptsetup-bin \
-  && rm -rf /var/lib/apt/lists/*
-
-# Install phate 
-RUN python3 -m pip install --no-cache-dir  phate
 
 # Install  scvi-tools 
 RUN python3 -m pip install --no-cache-dir  scvi-tools 
@@ -36,36 +14,26 @@ RUN python3 -m pip install --no-cache-dir  PhenoGraph
 RUN python3 -m pip install --no-cache-dir  palantir 
 
 ########### Install R Packages #########
-# Install Seurat 
-RUN R -e "install.packages('Seurat', dependencies=TRUE, repos='http://cran.rstudio.com/')"
-
-# Install Seurat  Object
-RUN R -e "install.packages('SeuratObject', dependencies=TRUE, repos='http://cran.rstudio.com/')"
-
-# Install tidymodels
-RUN R -e "install.packages('tidymodels', dependencies=TRUE, repos='http://cran.rstudio.com/')"
 
 # Install dyno 
 RUN R -e "devtools::install_github('dynverse/dyno')"
 
-# Install phateR1
-RUN R -e "install.packages('phateR')"
-
-# Install Harmony
-RUN R -e "install.packages('harmony')"
-
-# Install scPred
-RUN devtools::install_github("powellgenomicslab/scPred")
-
-
 # Install swne 
-RUN R -e "if(!require(remotes)){ install.packages('remotes') # If not already installed; }"
 RUN R -e "remotes::install_github('linxihui/NNLM')"
-RUN R -e "remotes::install_github('yanwu2014/swne')"
 
 RUN R -e "devtools::install_github('aertslab/RcisTarget')"
-RUN R -e"devtools::install_github('aertslab/AUCell')"
-RUN R -e"devtools::install_github('aertslab/cisTopic')"
+
+RUN R -e "BiocManager::install('AUCell')"
+
+RUN R -e "devtools::install_github('aertslab/cisTopic')"
+
+RUN R -e "remotes::install_github('yanwu2014/swne')"
+
+# Install scPred
+RUN R -e "devtools::install_github('powellgenomicslab/scPred')"
+
+# Install tidymodels
+RUN R -e "install.packages('tidymodels', dependencies=TRUE, repos='http://cran.rstudio.com/')"
 
 
 
