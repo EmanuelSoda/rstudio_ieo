@@ -15,6 +15,7 @@ RUN apt-get update &&  apt-get install -y --no-install-recommends \
     liblzma-dev \
     libfribidi-dev \
     libbz2-dev \
+    libgeos-dev \
     libfreetype6-dev \
     libpng-dev \
     libtiff5-dev \

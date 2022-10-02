@@ -9,7 +9,7 @@ IMAGE_VERSION=$(date "+%m%d%y")
 ##===========================================##===========================================##
 # Build the image and push it to docker hub
 ##===========================================##===========================================##
-docker build --platform linux/amd64 --no-cache -t emanuelsoda/rstudio_seurat:${IMAGE_VERSION}  -t emanuelsoda/rstudio_seurat:latest . -f /Users/ieo5571/Documents/rstudio_ieo/Rstudio_Seurat.dockerfile 2>&1 | tee stdout.log && \
+docker build --platform linux/amd64 --no-cache -t emanuelsoda/rstudio_seurat:${IMAGE_VERSION}  -t emanuelsoda/rstudio_seurat:latest . -f Rstudio_Seurat.dockerfile 2>&1 | tee stdout.log && \
 docker push emanuelsoda/rstudio_seurat:${IMAGE_VERSION}
 docker push emanuelsoda/rstudio_seurat:latest
 
