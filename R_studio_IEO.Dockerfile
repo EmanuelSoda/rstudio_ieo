@@ -30,7 +30,4 @@ RUN R --no-echo --no-restore --no-save -e "remotes::install_github('yanwu2014/sw
 # Install scPred
 RUN R --no-echo --no-restore --no-save -e "devtools::install_github('powellgenomicslab/scPred')"
 
-# Install tidymodels
-RUN R --no-echo --no-restore --no-save -e "install.packages('tidymodels', dependencies=TRUE, repos='http://cran.rstudio.com/')"
-
 
